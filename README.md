@@ -1,10 +1,10 @@
 # Auto AD Recon NetExec Script
 
-🔍 **Comprehensive Active Directory Enumeration & Reconnaissance Tool**
+ **Comprehensive Active Directory Enumeration & Reconnaissance Tool**
 
 An automated Python script that leverages NetExec to perform thorough Active Directory reconnaissance across multiple protocols. Features a professional color-coded interface and supports various authentication methods for complete AD enumeration.
 
-## 🚀 Features
+##  Features
 
 ### Core Functionality
 - **Multi-Protocol Support**: Automated LDAP and SMB enumeration
@@ -53,7 +53,7 @@ An automated Python script that leverages NetExec to perform thorough Active Dir
 - `reg-query` - Registry queries
 - And more...
 
-## 📋 Prerequisites
+##  Prerequisites
 
 - **NetExec** installed and accessible in PATH
 - **Python 3.6+**
@@ -76,7 +76,7 @@ cd auto-ad-recon-netexec
 # Make executable (Linux/Mac)
 chmod +x auto_ad_recon.py
 
-💻 Usage
+ Usage
 Basic Usage
 
 # Full enumeration with credentials
@@ -129,7 +129,7 @@ Execution Control:
 Output:
   -o, --output         Save results to file
 
-📊 Sample Output
+ Sample Output
 
 ====================================================================================================
                     Auto AD Recon NetExec Script
@@ -154,7 +154,7 @@ LDAP         10.10.10.100  389    DC01    Guest                         <never>
 LDAP         10.10.10.100  389    DC01    john.doe                      2024-01-10
 [SUCCESS] Flag --users completed successfully
 
-🎯 Use Cases
+ Use Cases
 
 Penetration Testing: Comprehensive AD reconnaissance during authorized engagements
 Red Team Operations: Initial enumeration and attack surface mapping
@@ -162,15 +162,15 @@ Security Assessments: Identifying misconfigurations and security gaps
 CTF/HackTheBox: Automated enumeration for AD-focused challenges
 Security Research: Educational tool for understanding AD enumeration techniques
 
-⚠️ Legal Disclaimer
+ Legal Disclaimer
 This tool is designed for authorized security testing only. Users must ensure they have explicit permission to test target systems. Unauthorized access to computer systems is illegal and unethical.
 
-✅ Use only on systems you own or have explicit written permission to test
-✅ Follow responsible disclosure practices
-✅ Comply with all applicable laws and regulations
-❌ Do not use for malicious purposes
+ Use only on systems you own or have explicit written permission to test
+ Follow responsible disclosure practices
+ Comply with all applicable laws and regulations
+ Do not use for malicious purposes
 
-🤝 Contributing
+ Contributing
 Contributions are welcome! Please feel free to submit pull requests, report bugs, or suggest new features.
 Areas for Contribution
 
@@ -180,15 +180,15 @@ New authentication methods
 Performance optimizations
 Documentation improvements
 
-📝 License
+ License
 This project is licensed under the MIT License - see the LICENSE file for details.
-🔗 References
+ References
 
 NetExec Documentation
 Active Directory Security Testing Guide
 MITRE ATT&CK Framework
 
-👨‍💻 Author
+ Author
 Abhishek Joshi (azunhsephiroth77)
 
 GitHub: @azunhsephiroth77
