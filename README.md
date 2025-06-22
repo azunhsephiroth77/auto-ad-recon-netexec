@@ -1,24 +1,25 @@
 # Auto AD Recon - NetExec Wrapper for Automated Active Directory Enumeration
 
-Auto AD Recon is an advanced wrapper script for NetExec (https://github.com/Pennyw0rth/NetExec), designed to automate comprehensive Active Directory enumeration using both LDAP and SMB protocols. It simplifies and accelerates recon by combining NetExec’s built-in capabilities with powerful custom modules. The tool supports various authentication methods, detects misconfigured ADCS (ESC1–ESC8), analyzes abusable ACLs, supports BloodHound data collection, and organizes output with summaries and command tracking.
+Auto AD Recon is a modular Python wrapper for NetExec (https://github.com/Pennyw0rth/NetExec) that performs extensive Active Directory enumeration over SMB and LDAP. It supports multiple authentication mechanisms and integrates custom modules for ACL analysis, ADCS misconfiguration detection (ESC1 to ESC8), machine quota discovery, LAPS retrieval, and BloodHound-compatible output. It is designed to accelerate recon during red team ops, internal pentests, and AD-focused CTFs.
 
 Features:
-- Automated LDAP and SMB enumeration with built-in and custom NetExec modules
-- Supports user/password, NTLM hash, and null session authentication
-- Discovers and highlights Active Directory Certificate Services (ADCS) misconfigurations (ESC1–ESC8)
-- Detects abusable access control entries (e.g., GenericAll, WriteDACL)
-- Gathers session info, DNS zones, group memberships, LAPS, machine account quotas, trust relationships, and more
-- Optional BloodHound-compatible data collection via --dns-server
-- Custom delay control between each command
-- Saves results in organized output with command breakdowns and status indicators
+- Multi-protocol AD enumeration using NetExec
+- Supports authentication via password, NTLM hash, or null session
+- Executes both built-in and custom NetExec modules in parallel
+- Detects common ADCS misconfigs (ESC1 to ESC8)
+- Parses ACLs for privilege escalation (e.g., GenericAll, WriteDACL)
+- Extracts LAPS credentials, group memberships, trust relationships, and more
+- Supports optional BloodHound collection using --dns-server
+- Color-coded CLI output and optional result file writing
+- Command-level summaries and error handling
 
 Installation:
-Install NetExec (required):
+Install NetExec:
 pipx install netexec
 # or
 pip install netexec
 
-Clone and set up this tool:
+Clone the wrapper:
 git clone https://github.com/azunhsephiroth77/auto-ad-recon-netexec.git
 cd auto-ad-recon-netexec
 chmod +x auto_ad_recon.py
@@ -30,29 +31,29 @@ python3 auto_ad_recon.py -t dc.domain.com -u username -pw password
 # Null session enumeration
 python3 auto_ad_recon.py -t 192.168.1.10 --null-session
 
-# Hash-based authentication
+# NTLM hash-based authentication
 python3 auto_ad_recon.py -t target.htb -u admin -H <NTLM_HASH>
 
-# LDAP enumeration only
+# LDAP-only enumeration
 python3 auto_ad_recon.py -t dc.corp.local -u user -pw pass -p ldap
 
-# SMB enumeration only
+# SMB-only enumeration
 python3 auto_ad_recon.py -t 10.10.10.100 -u guest -pw '' -p smb
 
-# Run built-in NetExec flags only
+# BloodHound-compatible data collection
+python3 auto_ad_recon.py -t dc.htb.local -u user -pw pass --dns-server 10.129.169.157
+
+# Run only built-in NetExec flags
 python3 auto_ad_recon.py -t target.htb -u user -pw pass --builtin-only
 
-# Run custom modules only
+# Run only custom modules
 python3 auto_ad_recon.py -t target.htb -u user -pw pass --modules-only
 
-# Save output to a file
+# Save output to file
 python3 auto_ad_recon.py -t target.htb -u user -pw pass -o output.txt
 
-# Add delay between commands
+# Add delay between modules
 python3 auto_ad_recon.py -t target.htb -u user -pw pass -d 5
-
-# BloodHound-compatible collection
-python3 auto_ad_recon.py -t dc.htb.local -u user -pw pass --dns-server 10.129.169.157
 
 Command Line Arguments:
   -t, --target           Target IP address or hostname (required)
@@ -67,23 +68,52 @@ Command Line Arguments:
   -d, --delay            Delay between commands in seconds (default: 2)
   -o, --output           Save all output to specified file
 
-Included Custom Modules:
+Included Modules:
 
-LDAP Modules:
-  - user-desc, whoami, groupmembership, maq (machine quota)
-  - laps (local admin passwords)
-  - pso (password settings objects)
-  - get-desc-users, get-userPassword, get-unixUserPassword
-  - get-network, enum_trusts, pre2k, daclread, adcs
+LDAP Built-in Flags:
+  --users, --groups, --asreproast, --kerberoasting, --get-sid, --bloodhound
 
-SMB Modules:
-  - whoami, spider_plus (directory scan), enum_av
-  - enum_dns, reg-query, handlekatz, enum_ca, timeroast
+LDAP Custom Modules:
+  user-desc, whoami, groupmembership, maq, laps, pso,
+  get-desc-users, get-userPassword, get-unixUserPassword,
+  get-network, enum_trusts, pre2k, daclread, adcs
+
+SMB Built-in Flags:
+  --shares, --sessions, --loggedon-users, --local-groups, --pass-pol, --rid-brute
+
+SMB Custom Modules:
+  whoami, spider_plus, enum_av, enum_dns, handlekatz, reg-query, enum_ca, timeroast
+
+Sample Output:
+====================================================================================================
+                    Auto AD Recon NetExec Script
+                 Comprehensive AD Enumeration & Reconnaissance
+====================================================================================================
+[INFO] Target: dc.corp.local
+[INFO] Protocols: ldap, smb
+[INFO] Authentication: Credentials
+****************************************************************************************************
+PROCESSING PROTOCOL: LDAP
+****************************************************************************************************
+[1/7] Running: --users
+Command: netexec ldap dc.corp.local -u admin -p password --users
+--------------------------------------------------------------------------------
+LDAP         10.10.10.100  389    DC01    [+] corp.local\admin:password
+LDAP         10.10.10.100  389    DC01    [*] Enumerated 15 domain users
+LDAP         10.10.10.100  389    DC01    john.doe                      2024-01-10
+[SUCCESS] Flag --users completed successfully
+
+Use Cases:
+- Penetration testing of internal AD environments
+- Red team enumeration and attack path discovery
+- Blue team validation of exposure to common recon vectors
+- CTF and HackTheBox-style AD recon automation
+- Security research and lab automation
+
+Legal Disclaimer:
+This tool is intended for use in environments you own or are explicitly authorized to test. Unauthorized access to systems is illegal. Use responsibly and in accordance with applicable laws and ethical guidelines.
 
 Author:
 Abhishek Joshi  
 GitHub: https://github.com/azunhsephiroth77  
 LinkedIn: https://www.linkedin.com/in/reverse-shell  
-
-Legal Notice:
-This tool is intended for use in authorized security assessments, penetration testing, and educational labs only.
