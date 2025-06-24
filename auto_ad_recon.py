@@ -4,8 +4,8 @@ Auto AD Recon NetExec Script
 Automated Active Directory reconnaissance and enumeration tool using NetExec.
 Supports comprehensive LDAP and SMB enumeration with various authentication methods.
 
-Author: Abhishek Joshi (azunhsephiroth77)
-GitHub: https://github.com/azunhsephiroth77
+Author: Abhishek Joshi (kernel-injection)
+GitHub: https://github.com/kernel-injection
 LinkedIn: https://www.linkedin.com/in/reverse-shell
 
 Use only for authorized penetration testing and security research.
@@ -902,8 +902,8 @@ LinkedIn: https://www.linkedin.com/in/reverse-shell
 
     print(f"\n{Colors.GRAY}{'='*120}{Colors.ENDC}")
     print(f"{Colors.BOLD}{Colors.CYAN}Auto AD Recon completed successfully!{Colors.ENDC}")
-    print(f"{Colors.BLUE}Author: {Colors.OKGREEN}Abhishek Joshi (azunhsephiroth77){Colors.ENDC}")
-    print(f"{Colors.BLUE}GitHub: {Colors.OKCYAN}https://github.com/azunhsephiroth77{Colors.ENDC}")
+    print(f"{Colors.BLUE}Author: {Colors.OKGREEN}Abhishek Joshi (kernel-injection){Colors.ENDC}")
+    print(f"{Colors.BLUE}GitHub: {Colors.OKCYAN}https://github.com/kernel-injection{Colors.ENDC}")
     print(f"{Colors.GRAY}{'='*120}{Colors.ENDC}")
 
 if __name__ == "__main__":
