@@ -115,5 +115,5 @@ This tool is intended for use in environments you own or are explicitly authoriz
 
 Author:
 Abhishek Joshi  
-GitHub: https://github.com/azunhsephiroth77  
+GitHub: https://github.com/kernel-injection  
 LinkedIn: https://www.linkedin.com/in/reverse-shell  
