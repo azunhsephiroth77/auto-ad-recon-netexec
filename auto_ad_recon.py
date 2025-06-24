@@ -48,8 +48,8 @@ def print_banner():
     print(f"{Colors.CYAN}                    Auto AD Recon NetExec Script{Colors.ENDC}")
     print(f"{Colors.YELLOW}                 Comprehensive AD Enumeration & Reconnaissance{Colors.ENDC}")
     print(f"{Colors.GRAY}{'='*100}{Colors.ENDC}")
-    print(f"{Colors.BLUE}Author: {Colors.OKGREEN}Abhishek Joshi (azunhsephiroth77){Colors.ENDC}")
-    print(f"{Colors.BLUE}GitHub: {Colors.OKCYAN}https://github.com/azunhsephiroth77{Colors.ENDC}")
+    print(f"{Colors.BLUE}Author: {Colors.OKGREEN}Abhishek Joshi (kernel-injection){Colors.ENDC}")
+    print(f"{Colors.BLUE}GitHub: {Colors.OKCYAN}https://github.com/kernel-injection{Colors.ENDC}")
     print(f"{Colors.BLUE}LinkedIn: {Colors.OKCYAN}https://www.linkedin.com/in/reverse-shell{Colors.ENDC}")
     print(f"{Colors.GRAY}{'='*100}{Colors.ENDC}")
 
@@ -693,8 +693,8 @@ Examples:
   # LDAP with BloodHound collection (requires DNS server)
   python3 auto_ad_recon.py -t dc.domain.local -u admin -pw pass --dns-server 10.129.169.157
 
-Author: Abhishek Joshi (azunhsephiroth77)
-GitHub: https://github.com/azunhsephiroth77
+Author: Abhishek Joshi (kernel-injection)
+GitHub: https://github.com/kernel-injection
 LinkedIn: https://www.linkedin.com/in/reverse-shell
 {Colors.ENDC}"""
     )
@@ -857,8 +857,8 @@ LinkedIn: https://www.linkedin.com/in/reverse-shell
                 f.write(f"Total commands: {len(all_results)}\n")
                 f.write(f"Successful: {successful}\n")
                 f.write(f"Failed: {failed}\n")
-                f.write(f"Author: Abhishek Joshi (azunhsephiroth77)\n")
-                f.write(f"GitHub: https://github.com/azunhsephiroth77\n\n")
+                f.write(f"Author: Abhishek Joshi (kernel-injection)\n")
+                f.write(f"GitHub: https://github.com/kernel-injection\n\n")
                 
                 for result in all_results:
                     f.write(f"\n{'='*80}\n")
